@@ -9,7 +9,7 @@ import {
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-function NotesModal (props) {
+function NotesItem (props) {
 	return (
 		<Card style={{ marginTop: "40px" }}>
 			<CardHeader
@@ -41,4 +41,4 @@ function NotesModal (props) {
 	);
 }
 
-export default NotesModal;
+export default NotesItem;

@@ -1,8 +1,8 @@
 import React from "react";
-import NotesModal from "./NotesModal";
+import NotesItem from "./NotesItem";
 
 function NotesList (props) {
-	return <NotesModal />;
+	return <NotesItem />;
 }
 
 export default NotesList;

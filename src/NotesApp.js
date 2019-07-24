@@ -9,6 +9,7 @@ function NotesApp (props) {
 	return (
 		<div className={classes.root}>
 			<Navbar />
+			<NotesList />
 		</div>
 	);
 }
