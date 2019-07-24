@@ -11,7 +11,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 
 function NotesModal (props) {
 	return (
-		<Card style={{ marginTop: "40px" }}>
+		<Card>
 			<CardHeader
 				title="Hello World"
 				subheader="September 12, 2019"
