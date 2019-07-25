@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	Card,
 	CardContent,
 	Typography,
 	CardHeader,
-	IconButton
+	IconButton,
+	CardActionArea
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import styles from "../Styles/NotesItem";
+import NotesModal from "./NotesModal";
 
 function NotesItem (props) {
 	const { classes, isListItem } = props;
@@ -19,26 +21,35 @@ function NotesItem (props) {
 		itemContent = itemContent.slice(0, 200);
 		itemContent = itemContent.concat("...");
 	}
+	const [ openModal, setOpenModal ] = useState(false);
+	function toggleModal () {
+		setOpenModal(!openModal);
+	}
 	return (
-		<Card>
-			<CardHeader
-				title="Hello World"
-				subheader="September 12, 2019"
-				action={
-					<React.Fragment>
-						<IconButton aria-label="Edit">
-							<EditIcon />
-						</IconButton>
-						<IconButton aria-label="Delete">
-							<DeleteIcon />
-						</IconButton>
-					</React.Fragment>
-				}
-			/>
-			<CardContent>
-				<Typography varaint="body2">{itemContent}</Typography>
-			</CardContent>
-		</Card>
+		<React.Fragment>
+			<Card>
+				<CardHeader
+					title="Hello World"
+					subheader="September 12, 2019"
+					action={
+						<React.Fragment>
+							<IconButton aria-label="Edit">
+								<EditIcon />
+							</IconButton>
+							<IconButton aria-label="Delete">
+								<DeleteIcon />
+							</IconButton>
+						</React.Fragment>
+					}
+				/>
+				<CardActionArea onClick={toggleModal}>
+					<CardContent>
+						<Typography varaint="body2">{itemContent}</Typography>
+					</CardContent>
+				</CardActionArea>
+			</Card>
+			<NotesModal openModal={openModal} toggleModal={toggleModal} />
+		</React.Fragment>
 	);
 }
 
