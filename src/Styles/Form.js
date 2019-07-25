@@ -1,21 +1,20 @@
 export default (theme) => ({
-	root: {
-		flexGrow: 1
-	},
-	menuButton: {
-		marginRight: theme.spacing(2)
+	appBar: {
+		position: "relative"
 	},
 	title: {
-		flexGrow: 1,
+		marginLeft: theme.spacing(2),
+		flex: 1,
 		display: "none",
 		[theme.breakpoints.up("sm")]: {
 			display: "block"
 		}
 	},
-	addButton: {
+	saveButton: {
 		marginLeft: "auto"
 	},
-	leftIcon: {
+	textField: {
+		marginLeft: theme.spacing(1),
 		marginRight: theme.spacing(1)
 	}
 });

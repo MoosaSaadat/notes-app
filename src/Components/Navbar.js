@@ -1,12 +1,12 @@
 import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
+import Icon from "@material-ui/core/Icon";
+import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import { withStyles } from "@material-ui/core/styles";
 import EventNoteIcon from "@material-ui/icons/EventNote";
-import SearchIcon from "@material-ui/icons/Search";
+import NoteAddIcon from "@material-ui/icons/NoteAdd";
+import { withStyles } from "@material-ui/core/styles";
 import styles from "../Styles/Navbar";
 
 function Navbar (props) {
@@ -15,29 +15,22 @@ function Navbar (props) {
 		<div className={classes.root}>
 			<AppBar position="static">
 				<Toolbar>
-					<IconButton
-						edge="start"
+					<Icon
 						className={classes.menuButton}
 						color="inherit"
-						aria-label="Open drawer">
+						aria-label="Logo Icon">
 						<EventNoteIcon />
-					</IconButton>
+					</Icon>
 					<Typography className={classes.title} variant="h6" noWrap>
 						My Notes
 					</Typography>
-					<div className={classes.search}>
-						<div className={classes.searchIcon}>
-							<SearchIcon />
-						</div>
-						<InputBase
-							placeholder="Search…"
-							classes={{
-								root: classes.inputRoot,
-								input: classes.inputInput
-							}}
-							inputProps={{ "aria-label": "Search" }}
-						/>
-					</div>
+					<Button
+						className={classes.addButton}
+						variant="contained"
+						color="default">
+						<NoteAddIcon className={classes.leftIcon} />
+						Add New
+					</Button>
 				</Toolbar>
 			</AppBar>
 		</div>
