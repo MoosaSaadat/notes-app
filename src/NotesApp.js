@@ -8,14 +8,6 @@ import { NotesProvider } from "./Contexts/NotesContext";
 import { FormProvider } from "./Contexts/FormContext";
 
 function NotesApp (props) {
-	// useEffect(
-	// 	() => {
-	// 		console.log("Inside UseEffect");
-	// 		return window.localStorage.setItem("notes", JSON.stringify(notes));
-	// 	},
-	// 	[ notes ]
-	// );
-
 	const { classes } = props;
 	return (
 		<div className={classes.root}>

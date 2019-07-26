@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import NotesItem from "./NotesItem";
 import { Grid } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
@@ -8,6 +8,15 @@ import { NotesContext } from "../Contexts/NotesContext";
 function NotesList (props) {
 	const { list } = useContext(NotesContext);
 	const { classes } = props;
+
+	useEffect(
+		() => {
+			console.log("Inside UseEffect");
+			return window.localStorage.setItem("notes", JSON.stringify(list));
+		},
+		[ list ]
+	);
+
 	const items = list.map((item) => (
 		<Grid item key={item.key} xs={10} sm={5} md={4} lg={3}>
 			<NotesItem note={item} />
