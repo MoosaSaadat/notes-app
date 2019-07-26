@@ -13,7 +13,6 @@ import Slide from "@material-ui/core/Slide";
 import { TextField, Grid } from "@material-ui/core";
 import { FormContext } from "../Contexts/FormContext";
 import { NotesContext } from "../Contexts/NotesContext";
-import { getFormDate, getKeyValue } from "../helperFunctions";
 
 const Transition = React.forwardRef(function Transition (props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
@@ -21,28 +20,25 @@ const Transition = React.forwardRef(function Transition (props, ref) {
 
 function Form (props) {
 	const { classes } = props;
-	const { note, setNote, open, isNew, setIsNew, toggleOpen } = useContext(
-		FormContext
-	);
-	const { addNote, saveUpdatedNote, notes } = useContext(NotesContext);
-	console.log(notes);
+	const {
+		note,
+		handleChange,
+		reset,
+		open,
+		toggleOpen,
+		isNew,
+		toggleIsNew
+	} = useContext(FormContext);
+	const { addNote, updateNote } = useContext(NotesContext);
 
 	function handleClose () {
 		toggleOpen();
-		setNote({
-			key: getKeyValue(notes),
-			title: "",
-			date: getFormDate(),
-			notes: ""
-		});
-		setIsNew(true);
-	}
-	function handleChange (e) {
-		setNote({ ...note, [e.target.name]: e.target.value });
+		reset();
+		toggleIsNew();
 	}
 	function handleSubmit () {
 		if (isNew) addNote(note);
-		else saveUpdatedNote(note);
+		else updateNote(note);
 		handleClose();
 	}
 
@@ -77,7 +73,7 @@ function Form (props) {
 					<TextField
 						required
 						autoFocus
-						id="notes-title"
+						id="note-title"
 						label="Title"
 						className={classes.textField}
 						onChange={handleChange}
@@ -108,11 +104,11 @@ function Form (props) {
 				required
 				multiline
 				rows={20}
-				id="notes-body"
+				id="note-body"
 				label="Notes"
 				className={classes.textField}
 				onChange={handleChange}
-				value={note.notes}
+				value={note.content}
 				name="notes"
 				margin="normal"
 				variant="outlined"

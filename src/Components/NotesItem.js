@@ -15,18 +15,15 @@ import NotesModal from "./NotesModal";
 import { NotesContext } from "../Contexts/NotesContext";
 import { FormContext } from "../Contexts/FormContext";
 import { getCustomDate } from "../helperFunctions";
+import { useToggleState } from "../Hooks/useToggleState";
 
 function NotesItem (props) {
-	const { key, title, date, notes } = props.note;
+	const { key, title, date, content } = props.note;
 	const { deleteNote } = useContext(NotesContext);
 	const { openEditor } = useContext(FormContext);
 	const formattedDate = getCustomDate(date);
 
-	let itemContent = notes;
-	const [ openModal, setOpenModal ] = useState(false);
-	function toggleModal () {
-		setOpenModal(!openModal);
-	}
+	const [ openModal, toggleModal ] = useToggleState(false);
 
 	const { classes } = props;
 	return (
@@ -55,7 +52,7 @@ function NotesItem (props) {
 				<CardActionArea onClick={toggleModal}>
 					<CardContent className={classes.container}>
 						<Typography varaint="body2" className={classes.itemContent}>
-							{itemContent}
+							{content}
 						</Typography>
 					</CardContent>
 				</CardActionArea>

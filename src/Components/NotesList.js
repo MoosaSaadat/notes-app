@@ -6,9 +6,9 @@ import styles from "../Styles/NotesList";
 import { NotesContext } from "../Contexts/NotesContext";
 
 function NotesList (props) {
-	const { notes } = useContext(NotesContext);
+	const { list } = useContext(NotesContext);
 	const { classes } = props;
-	const items = notes.map((item) => (
+	const items = list.map((item) => (
 		<Grid item key={item.key} xs={10} sm={5} md={4} lg={3}>
 			<NotesItem note={item} />
 		</Grid>

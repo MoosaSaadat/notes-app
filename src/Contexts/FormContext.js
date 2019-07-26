@@ -14,12 +14,12 @@ function FormProvider (props) {
 		notes: ""
 	};
 	const [ note, setNote, handleChange, reset ] = useSingleNoteState(currNote);
-	const [ isNew, setIsNew ] = useToggleState(true);
-	const [ open, setOpen ] = useToggleState(false);
+	const [ open, toggleOpen ] = useToggleState(false);
+	const [ isNew, toggleIsNew ] = useToggleState(true);
 	function openEditor (id) {
 		setNote(getNotesValue(id, list)[0]);
-		setIsNew(false);
-		setOpen(true);
+		toggleIsNew();
+		toggleOpen();
 	}
 	return (
 		<FormContext.Provider
@@ -29,9 +29,9 @@ function FormProvider (props) {
 				handleChange,
 				reset,
 				open,
-				setOpen,
+				toggleOpen,
 				isNew,
-				setIsNew,
+				toggleIsNew,
 				openEditor
 			}}>
 			{props.children}

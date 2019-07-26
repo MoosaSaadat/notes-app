@@ -5,5 +5,5 @@ export function useToggleState (initVal = false) {
 	function toggle () {
 		setVal(!val);
 	}
-	return [ val, setVal, toggle ];
+	return [ val, toggle ];
 }
