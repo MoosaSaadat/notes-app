@@ -13,35 +13,37 @@ export default (theme) => ({
 		whiteSpace: "pre-wrap",
 		position: "relative",
 		lineHeight: "1.5rem",
-		maxHeight: "7.5rem",
+		height: "7.5rem",
 		overflow: "hidden",
 		textAlign: "justify",
 		marginRight: "-1rem",
 		paddingRight: "1rem",
 		"&:before": {
 			content: "'...'",
-			fontSize: "1.5rem",
 			position: "absolute",
 			right: "1rem",
 			bottom: "0.2rem",
 			background: "white",
-			padding: "0 1.5rem 0 .5rem"
-			// boxShadow: "-15px 0px 5px 15px white"
+			fontSize: "1.5rem",
+			padding: "0 1.5rem 0 .5rem",
+			boxShadow: "0px 2px 5px 0px white"
 		},
 		"&:after": {
-			background: "white",
 			content: "'...'",
-			fontSize: "1.5rem",
 			position: "absolute",
-			padding: "0 1.5rem 0 .5rem",
 			right: "1rem",
-			boxShadow: "none",
+			padding: "0 1.5rem 0 .5rem",
+			marginTop: "1.5rem",
+			background: "white",
+			height: "6rem",
+			fontSize: "1.5rem",
 			color: "white"
 		}
 	},
 	container: {
-		[theme.breakpoints.up("sm")]: {
-			height: "7.5rem"
-		}
+		height: "7.5rem"
+		// [theme.breakpoints.up("sm")]: {
+		// 	height: "7.5rem"
+		// }
 	}
 });
