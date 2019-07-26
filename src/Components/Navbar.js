@@ -12,7 +12,7 @@ import { FormContext } from "../Contexts/FormContext";
 
 function Navbar (props) {
 	const { classes } = props;
-	const { toggleOpen } = useContext(FormContext);
+	const { openForm } = useContext(FormContext);
 	return (
 		<div className={classes.root}>
 			<AppBar position="static">
@@ -30,7 +30,7 @@ function Navbar (props) {
 						className={classes.addButton}
 						variant="contained"
 						color="default"
-						onClick={toggleOpen}>
+						onClick={openForm}>
 						<NoteAddIcon className={classes.leftIcon} />
 						Add New
 					</Button>

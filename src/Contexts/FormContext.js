@@ -1,8 +1,7 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { getFormDate, getKeyValue, getNotesValue } from "../helperFunctions";
 import { NotesContext } from "./NotesContext";
 import { useSingleNoteState } from "../Hooks/useSingleNoteState";
-import { useToggleState } from "../Hooks/useToggleState";
 
 const FormContext = createContext();
 function FormProvider (props) {
@@ -11,28 +10,31 @@ function FormProvider (props) {
 		key: getKeyValue(list),
 		title: "",
 		date: getFormDate(),
-		notes: ""
+		content: ""
 	};
-	const [ note, setNote, handleChange, reset ] = useSingleNoteState(currNote);
-	const [ open, toggleOpen ] = useToggleState(false);
-	const [ isNew, toggleIsNew ] = useToggleState(true);
+	const [ note, setNote, handleChange ] = useSingleNoteState(currNote);
+	const [ open, setOpen ] = useState(false);
+	const [ isNew, setIsNew ] = useState(true);
 	function openEditor (id) {
 		setNote(getNotesValue(id, list)[0]);
-		toggleIsNew();
-		toggleOpen();
+		setIsNew(false);
+		setOpen(true);
+	}
+	function openForm () {
+		setNote(currNote);
+		setIsNew(true);
+		setOpen(true);
 	}
 	return (
 		<FormContext.Provider
 			value={{
 				note,
-				setNote,
 				handleChange,
-				reset,
 				open,
-				toggleOpen,
+				setOpen,
 				isNew,
-				toggleIsNew,
-				openEditor
+				openEditor,
+				openForm
 			}}>
 			{props.children}
 		</FormContext.Provider>

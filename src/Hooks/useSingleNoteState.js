@@ -15,8 +15,5 @@ export function useSingleNoteState (initialVal = emptyNote) {
 			[e.target.name]: e.target.value
 		});
 	}
-	function reset (e) {
-		setNote(emptyNote);
-	}
-	return [ note, setNote, handleChange, reset ];
+	return [ note, setNote, handleChange ];
 }

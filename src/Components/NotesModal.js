@@ -17,7 +17,7 @@ import { getCustomDate } from "../helperFunctions";
 
 function NotesModal (props) {
 	const { openModal, toggleModal, classes } = props;
-	const { key, title, date, notes } = props.note;
+	const { key, title, date, content } = props.note;
 	const { deleteNote } = useContext(NotesContext);
 	const { openEditor } = useContext(FormContext);
 	const formattedDate = getCustomDate(date);
@@ -52,7 +52,7 @@ function NotesModal (props) {
 				<DialogContentText
 					id="alert-dialog-description"
 					className={classes.content}>
-					{notes}
+					{content}
 				</DialogContentText>
 			</DialogContent>
 		</Dialog>

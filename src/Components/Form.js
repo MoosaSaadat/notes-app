@@ -20,34 +20,21 @@ const Transition = React.forwardRef(function Transition (props, ref) {
 
 function Form (props) {
 	const { classes } = props;
-	const {
-		note,
-		handleChange,
-		reset,
-		open,
-		toggleOpen,
-		isNew,
-		toggleIsNew
-	} = useContext(FormContext);
+	const { note, isNew, open, setOpen, handleChange } = useContext(FormContext);
 	const { addNote, updateNote } = useContext(NotesContext);
 
 	function handleClose () {
-		toggleOpen();
-		reset();
-		toggleIsNew();
+		setOpen(false);
 	}
 	function handleSubmit () {
 		if (isNew) addNote(note);
 		else updateNote(note);
-		handleClose();
+		setOpen(false);
 	}
 
 	return (
-		<Dialog
-			fullScreen
-			open={open}
-			onClose={handleClose}
-			TransitionComponent={Transition}>
+		<Dialog fullScreen open={open} onClose={handleClose}>
+			{/* TransitionComponent={Transition}> */}
 			<AppBar className={classes.appBar}>
 				<Toolbar>
 					<IconButton
@@ -58,7 +45,7 @@ function Form (props) {
 						<CloseIcon />
 					</IconButton>
 					<Typography variant="h6" className={classes.title}>
-						Add New Notes
+						{isNew ? "Add New Notes" : "Edit Notes"}
 					</Typography>
 					<Button
 						color="inherit"
@@ -109,7 +96,7 @@ function Form (props) {
 				className={classes.textField}
 				onChange={handleChange}
 				value={note.content}
-				name="notes"
+				name="content"
 				margin="normal"
 				variant="outlined"
 			/>

@@ -26,8 +26,6 @@ function getFormDate () {
 }
 
 function getKeyValue (list) {
-	console.log(list);
-	console.log(list.length, list[list.length - 1]);
 	return list[list.length - 1].key + 1;
 }
 

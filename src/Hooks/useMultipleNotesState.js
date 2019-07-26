@@ -9,7 +9,6 @@ const initialNotes =
 
 export function useMultipleNotesState (initVal = initialNotes) {
 	const [ list, setList ] = useState(initVal);
-	console.log(list);
 	function addNote (newNote) {
 		setList([ ...list, { ...newNote, key: getKeyValue(list) } ]);
 	}
