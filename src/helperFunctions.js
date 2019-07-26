@@ -15,7 +15,6 @@ function getCustomDate (date) {
 		"December"
 	][mydate.getMonth()];
 	let str = `${month} ${mydate.getDate()}, ${mydate.getFullYear()}`;
-	// console.log(str);
 	return str;
 }
 
@@ -26,15 +25,14 @@ function getFormDate () {
 	return `${myDate.getFullYear()}-${myDate.getMonth()}-${myDate.getDate()}`;
 }
 
-function getKeyValue (notes) {
-	console.log(notes);
-	console.log(notes.length, notes[notes.length - 1]);
-	return notes[notes.length - 1].key + 1;
+function getKeyValue (list) {
+	console.log(list);
+	console.log(list.length, list[list.length - 1]);
+	return list[list.length - 1].key + 1;
 }
 
-function getNotesValue (id, notes) {
-	console.log(notes);
-	return notes.filter((item) => item.key === id);
+function getNotesValue (id, list) {
+	return list.filter((item) => item.key === id);
 }
 
 export { getCustomDate, getFormDate, getKeyValue, getNotesValue };

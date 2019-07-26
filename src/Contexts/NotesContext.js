@@ -1,35 +1,13 @@
 import React, { createContext, useState } from "react";
-import dummyNotes from "../dummyNotes";
-import { getKeyValue } from "../helperFunctions";
+import { useMultipleNotesState } from "../Hooks/useMultipleNotesState";
 
 const NotesContext = createContext();
 
 function NotesProvider (props) {
-	const initialNotes =
-		window.localStorage.getItem("notes") !== null
-			? JSON.parse(window.localStorage.getItem("notes"))
-			: dummyNotes;
-	const [ notes, setNotes ] = useState(initialNotes);
-
-	function saveUpdatedNote (newNote) {
-		setNotes(
-			notes.map((item) => {
-				if (item.key === newNote.key) return newNote;
-				return item;
-			})
-		);
-	}
-	function deleteNote (id) {
-		setNotes(notes.filter((item) => item.key !== id));
-	}
-	function addNote (newNote) {
-		console.log("Adding", newNote);
-		setNotes([ ...notes, { ...newNote, key: getKeyValue(notes) } ]);
-	}
+	const [ list, addNote, updateNote, deleteNote ] = useMultipleNotesState();
 
 	return (
-		<NotesContext.Provider
-			value={{ notes, saveUpdatedNote, deleteNote, addNote }}>
+		<NotesContext.Provider value={{ list, addNote, updateNote, deleteNote }}>
 			{props.children}
 		</NotesContext.Provider>
 	);
