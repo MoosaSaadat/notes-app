@@ -16,5 +16,10 @@ export default (theme) => ({
 	textField: {
 		marginLeft: theme.spacing(1),
 		marginRight: theme.spacing(1)
+	},
+	contentBox: {
+		marginLeft: theme.spacing(1),
+		marginRight: theme.spacing(1),
+		width: `calc(100% - ${theme.spacing(2)}px)`
 	}
 });

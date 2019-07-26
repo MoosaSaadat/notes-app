@@ -42,8 +42,5 @@ export default (theme) => ({
 	},
 	container: {
 		height: "7.5rem"
-		// [theme.breakpoints.up("sm")]: {
-		// 	height: "7.5rem"
-		// }
 	}
 });

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import NotesList from "./Components/NotesList";
 import Navbar from "./Components/Navbar";

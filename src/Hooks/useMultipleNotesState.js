@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import dummyNotes from "../dummyNotes";
 import { getKeyValue } from "../helperFunctions";
 
