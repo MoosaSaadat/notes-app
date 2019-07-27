@@ -19,7 +19,7 @@ import { useToggleState } from "../Hooks/useToggleState";
 
 function NotesItem (props) {
 	const { key, title, date, content } = props.note;
-	const { deleteNote } = useContext(NotesContext);
+	const { dispatch } = useContext(NotesContext);
 	const { openEditor } = useContext(FormContext);
 	const formattedDate = getCustomDate(date);
 
@@ -31,6 +31,7 @@ function NotesItem (props) {
 			<Card>
 				<CardHeader
 					title={title}
+					titleTypographyProps={{ noWrap: true }}
 					subheader={formattedDate}
 					action={
 						<React.Fragment>
@@ -43,7 +44,7 @@ function NotesItem (props) {
 							<IconButton
 								aria-label="Delete"
 								classes={{ root: classes.deleteButton }}
-								onClick={() => deleteNote(key)}>
+								onClick={() => dispatch({ type: "DELETE", key: key })}>
 								<DeleteIcon />
 							</IconButton>
 						</React.Fragment>

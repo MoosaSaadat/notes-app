@@ -21,15 +21,15 @@ const Transition = React.forwardRef(function Transition (props, ref) {
 function Form (props) {
 	const { classes } = props;
 	const { note, isNew, open, setOpen, handleChange } = useContext(FormContext);
-	const { addNote, updateNote } = useContext(NotesContext);
+	const { dispatch } = useContext(NotesContext);
 
 	function handleClose () {
 		setOpen(false);
 	}
 	function handleSubmit (e) {
 		e.preventDefault();
-		if (isNew) addNote(note);
-		else updateNote(note);
+		if (isNew) dispatch({ type: "ADD", item: note });
+		else dispatch({ type: "UPDATE", item: note });
 		setOpen(false);
 	}
 

@@ -18,7 +18,7 @@ import { getCustomDate } from "../helperFunctions";
 function NotesModal (props) {
 	const { openModal, toggleModal, classes } = props;
 	const { key, title, date, content } = props.note;
-	const { deleteNote } = useContext(NotesContext);
+	const { dispatch } = useContext(NotesContext);
 	const { openEditor } = useContext(FormContext);
 	const formattedDate = getCustomDate(date);
 
@@ -43,7 +43,7 @@ function NotesModal (props) {
 					</Button>
 					<Button
 						classes={{ root: classes.deleteButton }}
-						onClick={() => deleteNote(key)}>
+						onClick={() => dispatch({ type: "DELETE", key: key })}>
 						<DeleteIcon />
 					</Button>
 				</Box>

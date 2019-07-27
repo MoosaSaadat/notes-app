@@ -9,13 +9,9 @@ function NotesList (props) {
 	const { list } = useContext(NotesContext);
 	const { classes } = props;
 
-	useEffect(
-		() => {
-			console.log("Inside UseEffect");
-			return window.localStorage.setItem("notes", JSON.stringify(list));
-		},
-		[ list ]
-	);
+	useEffect(() => window.localStorage.setItem("notes", JSON.stringify(list)), [
+		list
+	]);
 
 	const items = list.map((item) => (
 		<Grid item key={item.key} xs={10} sm={5} md={4} lg={3}>
