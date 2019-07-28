@@ -16,15 +16,14 @@ It provides all the CRUD functions:
 
 -> Notes App
 
-  (NotesProvider)
+(NotesProvider)
 
-  (FormProvider)
-
+(FormProvider)
   -> Navbar
+ 
+   -> NotesList
 
-	-> NotesList
-
-	-> Form
+   -> Form
 
 ### Tech Stack
 
