@@ -14,16 +14,17 @@ It provides all the CRUD functions:
 
 ### Component Tree
 
--> Notes App
+**Notes App**
 
-(NotesProvider)
+**(NotesProvider)**
 
-(FormProvider)
-  -> Navbar
+**(FormProvider)**
+  
+  **Navbar**
  
-   -> NotesList
+  **NotesList**
 
-   -> Form
+  **Form**
 
 ### Tech Stack
 
