@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, memo } from "react";
 import {
 	Card,
 	CardContent,
@@ -26,12 +26,12 @@ function NotesItem (props) {
 	const [ openModal, toggleModal ] = useToggleState(false);
 
 	const { classes } = props;
+	// console.log("Item:", title);
 	return (
 		<React.Fragment>
 			<Card>
 				<CardHeader
 					title={title}
-					titleTypographyProps={{ noWrap: true }}
 					subheader={formattedDate}
 					action={
 						<React.Fragment>
@@ -67,4 +67,4 @@ function NotesItem (props) {
 	);
 }
 
-export default withStyles(styles)(NotesItem);
+export default memo(withStyles(styles)(NotesItem));

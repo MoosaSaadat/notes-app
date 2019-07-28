@@ -18,6 +18,7 @@ function NotesList (props) {
 			<NotesItem note={item} />
 		</Grid>
 	));
+	// console.log("List:", list);
 	return (
 		<div className={classes.root}>
 			<Grid container spacing={3} justify="center" className={classes.grid}>

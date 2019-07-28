@@ -33,6 +33,7 @@ function Form (props) {
 		setOpen(false);
 	}
 
+	// console.log("Form:", note.title);
 	return (
 		<Dialog
 			fullScreen

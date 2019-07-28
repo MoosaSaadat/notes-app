@@ -22,6 +22,7 @@ function NotesModal (props) {
 	const { openEditor } = useContext(FormContext);
 	const formattedDate = getCustomDate(date);
 
+	// console.log("Modal:", title);
 	return (
 		<Dialog
 			open={openModal}
